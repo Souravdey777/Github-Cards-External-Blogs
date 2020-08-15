@@ -25,13 +25,6 @@ Paste the markdown in your github readme (change the username)
 Use the `?username=` of your Medium's account to feth the blogCards.<br>
 Use the `&type=` (horizontal or vertical) for alignment.<br>
 
-## Vertical type
-
-```
-[![Harshal Jadhav Medium](https://mediumblog-cards.vercel.app/getMediumBlogs?username=harshalrj25)](https://medium.com/@harshalrj25)
-```
-
-[![Harshal Jadhav Medium](https://mediumblog-cards.vercel.app/getMediumBlogs?username=harshalrj25)](https://medium.com/@harshalrj25)
 
 **WIP**
 [x]Medium BLogs
