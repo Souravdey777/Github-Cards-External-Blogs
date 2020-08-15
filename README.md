@@ -1,6 +1,6 @@
-##Blog Cards :loudspeaker:
+## Blog Cards :loudspeaker:
 
-**Show your support a :star: is all this repo needs ** :smile:
+**Show your support a :star: is all this repo needs** :smile:
 
 Fetch your external blog information and display it in your github profile.
 
@@ -22,9 +22,9 @@ Paste the markdown in your github readme (change the username)
 
 ## Query params
 
-Use the `?username=` of your Medium's account to feth the blogCards.<br>
-Use the `&type=` (horizontal or vertical) for alignment.<br>
-
+Use the `?username=` of your Medium's account to fetch the blogs.<br>
+Use the `&type=` (horizontal or vertical) for alignment.(Optional)<br>
+Use the `&limit=` (number) for limit the count of blogs.(Optional)<br>
 
 **WIP**
 [x]Medium BLogs
