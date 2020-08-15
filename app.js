@@ -47,7 +47,7 @@ app.get('/getMediumBlogs', async (request, response) => {
     const resultData = await getUserData(username);
     let result = `<svg>`;
     if (type == 'horizontal') {
-      result = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${resultData.length * 200}" version="1.2" height="400">`;
+      result = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${resultData.length * 200}" version="1.2" height="290">`;
       await asyncForEach(resultData, async (blog, index) => {
         if (index >= limit) {
           return;
@@ -56,13 +56,13 @@ app.get('/getMediumBlogs', async (request, response) => {
         result += `<g transform="translate(${index * 200}, 0)">${blogCardObj}</g>`;
       });
     } else {
-      result = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" version="1.2" height="${resultData.length * 400}">`;
+      result = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" version="1.2" height="${resultData.length * 290}">`;
       await asyncForEach(resultData, async (blog, index) => {
         if (index >= limit) {
           return;
         }
         const blogCardObj = await blogCard(blog);
-        result += `<g transform="translate(0, ${index * 200})">${blogCardObj}</g>`;
+        result += `<g transform="translate(0, ${index * 290})">${blogCardObj}</g>`;
       });
     }
     result += `</svg>`;
