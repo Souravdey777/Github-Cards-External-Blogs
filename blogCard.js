@@ -13,36 +13,14 @@ const blogCard = async (data) => {
   const mediumLogo = await getBase64("https://raw.githubusercontent.com/harshalrj25/MasterAssetsRepo/master/mediumLong.png");
   const blogDate = new Date(data.pubDate).toLocaleString('default', { year: 'numeric', month: 'short', day: 'numeric' })
   const blogLink = data.link;
-  function wrap(text, width) {
-    text.each(function () {
-      var text = d3.select(this),
-        words = text.text().split(/\s+/).reverse(),
-        word,
-        line = [],
-        lineNumber = 0,
-        lineHeight = 1.1, // ems
-        y = text.attr("y"),
-        dy = parseFloat(text.attr("dy")),
-        tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
-      while (word = words.pop()) {
-        line.push(word);
-        tspan.text(line.join(" "));
-        if (tspan.node().getComputedTextLength() > width) {
-          line.pop();
-          tspan.text(line.join(" "));
-          line = [word];
-          tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
-        }
-      }
-    });
-  }
+
   return `
     <svg height="300px" width="200">
 
 
    <style>
    .header {
-     font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
+     font: 600 10px 'Segoe UI', Ubuntu, Sans-Serif;
      fill: #2f80ed;
      animation: fadeInAnimation 0.8s ease-in-out forwards;
    }
@@ -59,11 +37,7 @@ font: 800 24px 'Segoe UI', Ubuntu, Sans-Serif; fill: #333;
 animation: scaleInAnimation 0.3s ease-in-out forwards;
 }
 
-.bold { font-weight: 700, font: 20px }
-.icon {
-fill: #4c71f2;
-display: block;
-}
+.bold { font-weight: 700 }
 
 
 }
@@ -81,9 +55,6 @@ display: block;
    fill="#fffefe"
    stroke-opacity="1"
  />
-   <text xlink:href="#blogName" transform="translate(100,0)" x="-90" y="250"  class="stat bold">
-${data.title}
-   </text>
    <rect
    height="200"
    stroke="#E4E2E2"
@@ -95,6 +66,20 @@ ${data.title}
 
    <text transform="translate(100,0)" xlink:href="#blogDate"  x="-90" y="15"  class="stat">
 ${blogDate}
+   </text>
+   <foreignObject
+        x="10" y="245" width="170" height="200"
+      >
+        <div
+          xmlns="http://www.w3.org/1999/xhtml"
+          xlink:href="#blogName" 
+          class="header bold"
+          style="color:#2f80ed"
+        >${data.title}
+        </div>
+      </foreignObject>
+      <text transform="translate(100,0)" xlink:href="#blogDate"  x="-90" y="240"  class="stat">
+${data.author}
    </text>
    </a>
   </svg>
