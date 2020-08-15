@@ -27,8 +27,9 @@ Use the `&type=` (horizontal or vertical) for alignment.(Optional)<br>
 Use the `&limit=` (number) for limit the count of blogs.(Optional)<br>
 
 **WIP**
-[x]Medium BLogs
-[ ]DEV BLogs
-[ ]UI Improvisation
-[ ]Customisation of cards
+[x] Medium BLogs
+[ ] DEV BLogs
+[ ] UI Improvisation
+[ ] Customisation of cards
+
 **Open to Suggestions, Issues and Contributions**
