@@ -1,6 +1,6 @@
-##Blog Card :loudspeaker:
+##Blog Cards :loudspeaker:
 
-**So your support, a star :star: is all that a it** :smile:
+**Show your support a :star: is all this repo needs ** :smile:
 
 Fetch your external blog information and display it in your github profile.
 
@@ -14,10 +14,10 @@ Fetch your external blog information and display it in your github profile.
 
 ### Example of markdown syntax
 
-Paste the markdown in your github readme ( change the username)
+Paste the markdown in your github readme (change the username)
 
 ```
-[![Sourav Dey's Blog Cards](https://github-cards-external-blogs.vercel.app/getMediumBlogs?username=Souravdey777&type=horizontal)](https://medium.com/@Souravdey777)
+[![Sourav Dey's Blog Cards](https://github-cards-external-blogs.vercel.app/getMediumBlogs?username=_Username_&type=horizontal)](https://medium.com/@_Username_)
 ```
 
 ## Query params
