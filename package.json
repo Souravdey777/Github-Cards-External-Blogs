@@ -1,7 +1,7 @@
 {
-  "name": "mediumblog-cards",
+  "name": "github-cards-external-blogs",
   "version": "1.0.0",
-  "description": "mediumblog-cards",
+  "description": "github-cards-external-blogs",
   "main": "app.js",
   "scripts": {
     "start": "node ./app.js",
@@ -12,8 +12,8 @@
     "type": "git",
     "url": "git+https://github.com/Souravdey777/Github-Cards-External-Blogs.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Sourav Dey",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
     "express": "^4.17.1"
