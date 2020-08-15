@@ -15,7 +15,7 @@ const blogCard = async (data) => {
   const blogLink = data.link;
 
   return `
-    <svg height="300px" width="200">
+    <svg height="320px" width="200">
 
 
    <style>
