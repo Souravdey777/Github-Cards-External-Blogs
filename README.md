@@ -1,5 +1,11 @@
 ## Blog Cards :loudspeaker:
 
+
+[![HitCount](http://hits.dwyl.com/Souravdey777/Github-Cards-External-Blogs.svg)](http://hits.dwyl.com/Souravdey777/Github-Cards-External-Blogs)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat)](https://opensource.org/licenses/MIT)
+[![GitHub version](https://d25lcipzij17d.cloudfront.net/badge.png?id=gh&v=1.0&style=flat)](https://badge.fury.io/gh/Souravdey777/Github-Cards-External-Blogs)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Souravdey777/Github-Cards-External-Blogs/issues)
+
 **Show your support a :star: is all this repo needs** :smile:
 
 Fetch your external blog information and display it in your github profile.
@@ -19,6 +25,8 @@ Paste the markdown in your github readme (change the username)
 ```
 [![Sourav Dey's Blog Cards](https://github-cards-external-blogs.vercel.app/getMediumBlogs?username=_Username_&type=horizontal)](https://medium.com/@_Username_)
 ```
+
+---
 
 ## Query params
 
