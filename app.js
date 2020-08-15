@@ -3,7 +3,7 @@ var app = express();
 app.use(express.json());
 const axios = require('axios');
 const mediumURL = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@"
-const blogCard = require('./blogCard');
+const blogCard = require('./MediumblogCard');
 
 const getUserData = async (username) => {
   try {

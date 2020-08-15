@@ -10,7 +10,7 @@ const getBase64 = async (url) => {
 
 const blogCard = async (data) => {
   const blogImage = await getBase64(data.thumbnail);
-  const mediumLogo = await getBase64("https://raw.githubusercontent.com/harshalrj25/MasterAssetsRepo/master/mediumLong.png");
+  const mediumLogo = await getBase64("https://raw.githubusercontent.com/Souravdey777/Github-Cards-External-Blogs/master/mediumlogo.png");
   const blogDate = new Date(data.pubDate).toLocaleString('default', { year: 'numeric', month: 'short', day: 'numeric' })
   const blogLink = data.link;
 
@@ -64,21 +64,22 @@ animation: scaleInAnimation 0.3s ease-in-out forwards;
  />
    <image xlink:href="data:image/png;base64,${blogImage}"  x="10" y="25" width="85%" height="180" />
 
-   <text transform="translate(100,0)" xlink:href="#blogDate"  x="-90" y="15"  class="stat">
+   <image xlink:href="data:image/png;base64,${mediumLogo}"  x="140" y="5" height="14" />
+
+   <text transform="translate(100,0)" xlink:href="#blogDate"  x="-90" y="16"  class="stat bold">
 ${blogDate}
    </text>
    <foreignObject
-        x="10" y="245" width="170" height="200"
-      >
+        x="10" y="245" width="170" height="200">
         <div
           xmlns="http://www.w3.org/1999/xhtml"
           xlink:href="#blogName" 
-          class="header bold"
-          style="color:#2f80ed"
+          class="header"
+          style="color:#2f80ed;font-size:12px"
         >${data.title}
         </div>
       </foreignObject>
-      <text transform="translate(100,0)" xlink:href="#blogDate"  x="-90" y="240"  class="stat">
+      <text transform="translate(100,0)" xlink:href="#blogDate"  x="-90" y="242"  class="stat bold">
 ${data.author}
    </text>
    </a>
