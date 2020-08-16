@@ -3,7 +3,7 @@ var app = express();
 app.use(express.json());
 const axios = require('axios');
 const mediumURL = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@"
-const blogCard = require('./MediumblogCard');
+const { blogCardH, blogCardV } = require('./MediumblogCard');
 
 const getUserData = async (username) => {
   try {
@@ -46,23 +46,23 @@ app.get('/getMediumBlogs', async (request, response) => {
     }
     const resultData = await getUserData(username);
     let result = `<svg>`;
-    if (type == 'horizontal') {
+    if (type === 'horizontal') {
       result = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${resultData.length * 200}" version="1.2" height="310">`;
       await asyncForEach(resultData, async (blog, index) => {
         if (index >= limit) {
           return;
         }
-        const blogCardObj = await blogCard(blog);
+        const blogCardObj = await blogCardH(blog);
         result += `<g transform="translate(${index * 200}, 0)">${blogCardObj}</g>`;
       });
     } else {
-      result = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" version="1.2" height="${resultData.length * 310}">`;
+      result = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" version="1.2" height="${resultData.length * 160}">`;
       await asyncForEach(resultData, async (blog, index) => {
         if (index >= limit) {
           return;
         }
-        const blogCardObj = await blogCard(blog);
-        result += `<g transform="translate(0, ${index * 310})">${blogCardObj}</g>`;
+        const blogCardObj = await blogCardV(blog);
+        result += `<g transform="translate(0, ${index * 160})">${blogCardObj}</g>`;
       });
     }
     result += `</svg>`;
