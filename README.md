@@ -14,7 +14,7 @@ Fetch your external blog information and display it in your github profile.
 [![Sourav Dey's Blog Cards](https://github-cards-external-blogs.souravdey777.vercel.app/getMediumBlogs?username=Souravdey777&type=horizontal)](https://medium.com/@Souravdey777)
 ```
 
-[![Sourav Dey's Blog Cards](https://github-cards-external-blogs.souravdey777.vercel.app/getMediumBlogs?username=Souravdey777&type=horizontal)](https://medium.com/@Souravdey777)
+[![Sourav Dey's Blog Cards](https://github-cards-external-blogs.vercel.app/getMediumBlogs?username=oyetoketoby80&type=horizontal)](https://medium.com/@Souravdey777)
 
 ---
 
