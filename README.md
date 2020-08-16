@@ -16,6 +16,14 @@ Fetch your external blog information and display it in your github profile.
 
 ---
 
+### Query params
+
+Use the `?username=` of your Medium's account to fetch the blogs.<br>
+Use the `&type=` (horizontal or vertical) for alignment.(Optional)<br>
+Use the `&limit=` (number) for limit the count of blogs.(Optional)<br>
+
+---
+
 ### Example of markdown syntax
 
 Paste the markdown in your github readme (change the username)
@@ -45,12 +53,6 @@ Paste the markdown in your github readme (change the username)
 [![Sourav Dey's Blog Cards](https://github-cards-external-blogs.souravdey777.vercel.app/getMediumBlogs?username=Souravdey777&type=horizontal)](https://medium.com/@Souravdey777)
 
 ---
-
-## Query params
-
-Use the `?username=` of your Medium's account to fetch the blogs.<br>
-Use the `&type=` (horizontal or vertical) for alignment.(Optional)<br>
-Use the `&limit=` (number) for limit the count of blogs.(Optional)<br>
 
 **WIP**
 
