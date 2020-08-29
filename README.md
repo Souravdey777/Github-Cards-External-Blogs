@@ -4,7 +4,9 @@
 [![GitHub version](https://d25lcipzij17d.cloudfront.net/badge.png?id=gh&v=1.0&style=flat)](https://badge.fury.io/gh/Souravdey777/Github-Cards-External-Blogs)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Souravdey777/Github-Cards-External-Blogs/issues)
 
-**Show your support a :star: is all this repo needs** :smile:
+**Show your support, a :star: is all this repo needs** :smile: 
+
+**Check deploy your own :point_down:**
 
 Fetch your external blog information and display it in your github profile.
 
@@ -62,3 +64,11 @@ Paste the markdown in your github readme (change the username)
 - [ ] Customisation of cards
 
 **Open to Suggestions, Issues and Contributions** :smile:
+
+---
+
+### Deploy your own
+
+**Show some love with :star:**
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https://github.com/Souravdey777/Github-Cards-External-Blogs)
