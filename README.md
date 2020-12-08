@@ -1,7 +1,7 @@
 ## Blog Cards :loudspeaker:
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat)](https://opensource.org/licenses/MIT)
-[![GitHub version](https://d25lcipzij17d.cloudfront.net/badge.png?id=gh&v=1.0&style=flat)](https://badge.fury.io/gh/Souravdey777/Github-Cards-External-Blogs)
+[![GitHub version](https://img.shields.io/badge/version-1.0-brightgreen.svg?style=flat)](https://github.com/Souravdey777/Github-Cards-External-Blogs)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Souravdey777/Github-Cards-External-Blogs/issues)
 
 **Show your support, a :star: is all this repo needs** :smile: 
