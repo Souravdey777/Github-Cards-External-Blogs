@@ -8,7 +8,7 @@
 
 **Check deploy your own :point_down:**
 
-Fetch your external blogs and display it right in your github profile. Maximum limit 10.
+Fetch your external blogs and display it right in your github profile.
 
 ```
 [![Sourav Dey's Blog Cards](https://github-cards-external-blogs.souravdey777.vercel.app/getMediumBlogs?username=Souravdey777&type=horizontal)](https://medium.com/@Souravdey777)
@@ -21,8 +21,8 @@ Fetch your external blogs and display it right in your github profile. Maximum l
 ### Query params
 
 Use the `?username=` of your Medium's account to fetch the blogs.<br>
-Use the `&type=` (horizontal or vertical) for alignment.(Optional)<br>
-Use the `&limit=` (number) for limit the count of blogs.(Optional)<br>
+Use the `&type=` (horizontal or vertical) for alignment.(Optional). Default= **vertical**<br>
+Use the `&limit=` (number) for limit the count of blogs.(Optional). Default= **5**<br>
 
 ---
 
