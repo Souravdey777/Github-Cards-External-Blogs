@@ -44,7 +44,7 @@ app.get('/getMediumBlogs', async (request, response) => {
     if (request.query.limit) {
       limit = request.query.limit;
     }
-    const resultData = (await getUserData(username)).reverse();
+    const resultData = (await getUserData(username));
     let result = `<svg>`;
     if (type === 'horizontal') {
       result = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${resultData.length * 200}" version="1.2" height="310">`;
