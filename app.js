@@ -36,7 +36,7 @@ app.get('/getMediumBlogs', async (request, response) => {
       return;
     }
     const username = request.query.username;
-    let limit = 5;
+    let limit = 10;
     let type = 'vertical'
     if (request.query.type) {
       type = request.query.type;
@@ -52,7 +52,7 @@ app.get('/getMediumBlogs', async (request, response) => {
         if (index >= limit) {
           return;
         }
-        const blogCardObj = await blogCardH(blog);
+        const blogCardObj = await blogCardH(blog.reverse());
         result += `<g transform="translate(${index * 200}, 0)">${blogCardObj}</g>`;
       });
     } else {
@@ -61,7 +61,7 @@ app.get('/getMediumBlogs', async (request, response) => {
         if (index >= limit) {
           return;
         }
-        const blogCardObj = await blogCardV(blog);
+        const blogCardObj = await blogCardV(blog.reverse());
         result += `<g transform="translate(0, ${index * 160})">${blogCardObj}</g>`;
       });
     }
