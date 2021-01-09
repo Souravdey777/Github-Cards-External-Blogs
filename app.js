@@ -52,7 +52,7 @@ app.get('/getMediumBlogs', async (request, response) => {
         if (index >= limit) {
           return;
         }
-        const blogCardObj = await blogCardH(blog.reverse());
+        const blogCardObj = await blogCardH(blog);
         result += `<g transform="translate(${index * 200}, 0)">${blogCardObj}</g>`;
       });
     } else {
@@ -61,7 +61,7 @@ app.get('/getMediumBlogs', async (request, response) => {
         if (index >= limit) {
           return;
         }
-        const blogCardObj = await blogCardV(blog.reverse());
+        const blogCardObj = await blogCardV(blog);
         result += `<g transform="translate(0, ${index * 160})">${blogCardObj}</g>`;
       });
     }
