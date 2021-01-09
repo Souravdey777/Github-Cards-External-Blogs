@@ -8,7 +8,7 @@
 
 **Check deploy your own :point_down:**
 
-Fetch your external blog information and display it in your github profile.
+Fetch your external blogs and display it right in your github profile. Maximum limit 10.
 
 ```
 [![Sourav Dey's Blog Cards](https://github-cards-external-blogs.souravdey777.vercel.app/getMediumBlogs?username=Souravdey777&type=horizontal)](https://medium.com/@Souravdey777)
