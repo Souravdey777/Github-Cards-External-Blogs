@@ -1,20 +1,20 @@
 const axios = require('axios');
 
 const getBase64 = async (url) => {
-    return await axios
-        .get(url, {
-            responseType: 'arraybuffer'
-        })
-        .then(response => Buffer.from(response.data, 'binary').toString('base64'))
+  return await axios
+    .get(url, {
+      responseType: 'arraybuffer'
+    })
+    .then(response => Buffer.from(response.data, 'binary').toString('base64'))
 }
 
 const DblogCardH = async (data) => {
-    const blogImage = await getBase64(data.cover_image);
-    const mediumLogo = await getBase64("https://raw.githubusercontent.com/Souravdey777/Github-Cards-External-Blogs/master/mediumlogo.png");
-    const blogDate = new Date(data.published_at).toLocaleString('default', { year: 'numeric', month: 'short', day: 'numeric' })
-    const blogLink = data.url;
+  const blogImage = await getBase64(data.cover_image);
+  const devLogo = await getBase64("https://raw.githubusercontent.com/Souravdey777/Github-Cards-External-Blogs/master/devlogo.png");
+  const blogDate = new Date(data.published_at).toLocaleString('default', { year: 'numeric', month: 'short', day: 'numeric' })
+  const blogLink = data.url;
 
-    return `
+  return `
   <svg height="320px" width="200">
     <style>
       .title {
@@ -53,7 +53,7 @@ const DblogCardH = async (data) => {
       />
       <image xlink:href="data:image/png;base64,${blogImage}"  x="10" y="25" width="85%" height="180" />
 
-   <image xlink:href="data:image/png;base64,${mediumLogo}"  x="140" y="5" height="14" />
+   <image xlink:href="data:image/png;base64,${devLogo}"  x="140" y="5" height="14" />
 
    <text transform="translate(100,0)" xlink:href="#blogDate"  x="-90" y="16"  class="smallTitle bold">
 ${blogDate}
@@ -80,12 +80,12 @@ ${blogDate}
 
 
 const DblogCardV = async (data) => {
-    const blogImage = await getBase64(data.cover_image);
-    const mediumLogo = await getBase64("https://raw.githubusercontent.com/Souravdey777/Github-Cards-External-Blogs/master/mediumlogo.png");
-    const blogDate = new Date(data.published_at).toLocaleString('default', { year: 'numeric', month: 'short', day: 'numeric' })
-    const blogLink = data.url;
+  const blogImage = await getBase64(data.cover_image);
+  const devLogo = await getBase64("https://raw.githubusercontent.com/Souravdey777/Github-Cards-External-Blogs/master/devlogo.png");
+  const blogDate = new Date(data.published_at).toLocaleString('default', { year: 'numeric', month: 'short', day: 'numeric' })
+  const blogLink = data.url;
 
-    return `
+  return `
   <svg height="160px" width="400">
   <style>
   .title {
@@ -129,7 +129,7 @@ const DblogCardV = async (data) => {
         height="130"
       />
       <image
-        xlink:href="data:image/png;base64,${mediumLogo}" 
+        xlink:href="data:image/png;base64,${devLogo}" 
         x="330"
         y="10"
         height="14"
