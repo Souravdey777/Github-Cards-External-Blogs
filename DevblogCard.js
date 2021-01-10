@@ -10,7 +10,7 @@ const getBase64 = async (url) => {
 
 const DblogCardH = async (data) => {
     const blogImage = await getBase64(data.cover_image);
-    const mediumLogo = await getBase64("https://raw.githubusercontent.com/Souravdey777/Github-Cards-External-Blogs/master/mediumlogo.png");
+    const mediumLogo = await getBase64("https://raw.githubusercontent.com/Souravdey777/Github-Cards-External-Blogs/master/devlogo.png");
     const blogDate = new Date(data.published_at).toLocaleString('default', { year: 'numeric', month: 'short', day: 'numeric' })
     const blogLink = data.url;
 
@@ -81,7 +81,7 @@ ${blogDate}
 
 const DblogCardV = async (data) => {
     const blogImage = await getBase64(data.cover_image);
-    const mediumLogo = await getBase64("https://raw.githubusercontent.com/Souravdey777/Github-Cards-External-Blogs/master/mediumlogo.png");
+    const mediumLogo = await getBase64("https://raw.githubusercontent.com/Souravdey777/Github-Cards-External-Blogs/master/devlogo.png");
     const blogDate = new Date(data.published_at).toLocaleString('default', { year: 'numeric', month: 'short', day: 'numeric' })
     const blogLink = data.url;
 
