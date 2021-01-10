@@ -53,7 +53,7 @@ const DblogCardH = async (data) => {
       />
       <image xlink:href="data:image/png;base64,${blogImage}"  x="10" y="25" width="85%" height="180" />
 
-   <image xlink:href="data:image/png;base64,${devLogo}"  x="140" y="5" height="14" />
+   <image xlink:href="data:image/png;base64,${devLogo}"  x="160" y="5" height="14" />
 
    <text transform="translate(100,0)" xlink:href="#blogDate"  x="-90" y="16"  class="smallTitle bold">
 ${blogDate}
@@ -130,7 +130,7 @@ const DblogCardV = async (data) => {
       />
       <image
         xlink:href="data:image/png;base64,${devLogo}" 
-        x="330"
+        x="350"
         y="10"
         height="14"
       />
