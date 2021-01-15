@@ -1,0 +1,7 @@
+# Use REST Client Extension in VS code
+
+GET  https://github-cards-external-blogs.souravdey777.vercel.app/getMediumBlogs?username=souravdey777 HTTP/1.1
+
+content-type: application/json
+
+{}
