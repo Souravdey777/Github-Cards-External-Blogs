@@ -59,7 +59,7 @@ Paste the markdown in your github readme (change the username)
 **WIP**
 
 - [x] Medium BLogs
-- [ ] DEV BLogs
+- [x] DEV BLogs
 - [ ] UI Improvisation
 - [ ] Customisation of cards
 
