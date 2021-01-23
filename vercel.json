@@ -12,5 +12,11 @@
         },
         "src": "/.*",
         "dest": "/app.js"
-    }]
+    }],
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "https://github.com/Souravdey777/Github-Cards-External-Blogs"
+      }
+    ]
   }
