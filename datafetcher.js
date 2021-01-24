@@ -47,9 +47,9 @@ const getHashnodeBlog = async (slug, hostname) => {
           }
           title
           coverImage
-          totalReactions
-          dateUpdated
+          dateAdded
           brief
+          slug
         }
       }`,
         });
@@ -61,4 +61,37 @@ const getHashnodeBlog = async (slug, hostname) => {
     }
 };
 
-module.exports = { getDevData, getMediumData, getHashnodeBlog };
+const getLatestHashnodeBlog = async (username) => {
+
+    try {
+        const result = await axios.post(hashnodeURL, {
+            query: `query{
+            user(username: "${username}") {
+                publicationDomain
+                publication {
+                  posts(page:0) {
+                    author{
+                      username
+                      name
+                      photo
+                    }
+                    title
+                    coverImage
+                    dateAdded
+                    brief
+                    slug
+                  }
+                }
+            }
+        }`,
+        });
+        const filteredResult = result.data;
+        console.log(result.data)
+        return filteredResult;
+    } catch (error) {
+        // console.error(error);
+        return error;
+    }
+};
+
+module.exports = { getDevData, getMediumData, getHashnodeBlog, getLatestHashnodeBlog };

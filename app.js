@@ -2,10 +2,10 @@ var express = require('express');
 var app = express();
 app.use(express.json());
 
-const { getDevData, getMediumData, getHashnodeBlog } = require('./datafetcher')
+const { getDevData, getMediumData, getHashnodeBlog, getLatestHashnodeBlog } = require('./datafetcher')
 const { blogCardH, blogCardV } = require('./MediumblogCard');
 const { DblogCardH, DblogCardV } = require('./DevblogCard');
-const { hashnodeBlogCard } = require('./hashnodeBlogCard')
+const { hashnodeBlogCard, hashnodeLastestBlogCard } = require('./hashnodeBlogCard')
 
 
 
@@ -167,17 +167,12 @@ app.get('/getHashnodeBlog', async (request, response) => {
       return;
     }
     const { slug, hostname, } = request.query;
-    const scale = request.query.scale || 1
+    // const scale = request.query.scale || 1
     const resultData = (await getHashnodeBlog(slug, hostname));
-    // console.log(resultData.data.post)
-    // console.log(resultData.data.post.author)
-    const blogCardObj = await hashnodeBlogCard(resultData.data.post, slug, hostname, scale);
+    const blogCardObj = await hashnodeBlogCard(resultData.data.post, hostname);
     response.writeHead(200, { 'Content-Type': 'image/svg+xml' });
     response.write(blogCardObj);
     response.end();
-    // response.writeHead(200, { 'Content-Type': 'type/markdown' });
-    // response.write();
-    // response.end();
   } catch (error) {
     console.log(error);
     response.send('Error while fetching the data' + error);
@@ -185,25 +180,27 @@ app.get('/getHashnodeBlog', async (request, response) => {
 });
 
 
-app.get('/getHashnodeBlogMarkdown', async (request, response) => {
+app.get('/getLatestHashnodeBlog', async (request, response) => {
   try {
-    if (!request.query.slug || !request.query.hostname) {
+    if (!request.query.username) {
       response.write(JSON.stringify({ error: 'Query parameters are missing!' }));
       response.end();
       return;
     }
-    const { slug, hostname, } = request.query;
-    const scale = request.query.scale || 1
-    // const resultData = (await getHashnodeBlog(slug, hostname));
-    // console.log(resultData.data.post)
-    // console.log(resultData.data.post.author)
-    // const blogCardObj = await hashnodeBlogCard(resultData.data.post, slug, hostname, scale);
-    // response.writeHead(200, { 'Content-Type': 'image/svg+xml' });
-    // response.write(blogCardObj);
-    // response.end();
-    // response.writeHead(200, { 'Content-Type': 'type/text' });
-    response.send(`[![Sourav Dey's Blog Cards](https://github-cards-external-blogs.souravdey777.vercel.app/getHashnodeBlog??slug=${slug}&hostname=${hostname})](https://${hostname}/${slug})`);
-    // response.end();
+    const { username } = request.query;
+    // const scale = request.query.scale || 1
+    const resultData = (await getLatestHashnodeBlog(username));
+    console.log(resultData.data)
+
+    let result = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${resultData.data.user.publication.posts.length * 176}" version="1.2" height="310">`;
+    await asyncForEach(resultData.data.user.publication.posts, async (blog, index) => {
+      const blogCardObj = await hashnodeBlogCard(blog, resultData.data.user.publicationDomain);
+      result += `<svg x="${index * 176}" y="0">${blogCardObj}</svg>`;
+    });
+    result += `</svg>`;
+    response.writeHead(200, { 'Content-Type': 'image/svg+xml' });
+    response.write(result);
+    response.end();
   } catch (error) {
     console.log(error);
     response.send('Error while fetching the data' + error);
