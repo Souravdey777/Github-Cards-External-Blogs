@@ -218,7 +218,7 @@ app.get('/getLatestHashnodeBlog', async (request, response) => {
 
 app.get('/getLatestHashnodeBlogBySequence', async (request, response) => {
   try {
-    if (!request.query.username && !request.query.sequence && request.query.sequence > 0) {
+    if (!request.query.username || !request.query.sequence || request.query.sequence > 0) {
       response.write(JSON.stringify({ error: 'Query parameters are missing!' }));
       response.end();
       return;
