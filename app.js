@@ -216,10 +216,15 @@ app.get('/getLatestHashnodeBlog', async (request, response) => {
   }
 });
 
-app.get('/getLatestHashnodeBlogBySequence', async (request, response) => {
+app.get('/getHashnodeBlogBySequence', async (request, response) => {
   try {
-    if (!request.query.username || !request.query.sequence || request.query.sequence > 0) {
+    if (!request.query.username || !request.query.sequence) {
       response.write(JSON.stringify({ error: 'Query parameters are missing!' }));
+      response.end();
+      return;
+    }
+    else if (request.query.sequence < 1) {
+      response.write(JSON.stringify({ error: 'Please enter a valid sequence!' }));
       response.end();
       return;
     }
@@ -242,6 +247,7 @@ app.get('/getLatestHashnodeBlogBySequence', async (request, response) => {
     response.send('Error while fetching the data' + error);
   }
 });
+
 
 var port = process.env.PORT || 3000;
 
