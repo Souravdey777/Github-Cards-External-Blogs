@@ -1,12 +1,4 @@
-const axios = require('axios');
-
-const getBase64 = async (url) => {
-  return await axios
-    .get(url, {
-      responseType: 'arraybuffer'
-    })
-    .then(response => Buffer.from(response.data, 'binary').toString('base64'))
-}
+const { getBase64 } = require('./getBase64');
 
 const blogCardH = async (data) => {
   const blogImage = await getBase64(data.thumbnail);
@@ -75,9 +67,6 @@ ${blogDate}
   </svg >
     `;
 };
-
-
-
 
 const blogCardV = async (data) => {
   const blogImage = await getBase64(data.thumbnail);

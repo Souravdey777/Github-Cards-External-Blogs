@@ -1,51 +1,20 @@
 var express = require('express');
 var app = express();
 app.use(express.json());
-const axios = require('axios');
-const mediumURL = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@"
-const devURL = "https://dev.to/api/articles?username="
+
+const { getDevData, getMediumData, getHashnodeBlog } = require('./datafetcher')
 const { blogCardH, blogCardV } = require('./MediumblogCard');
 const { DblogCardH, DblogCardV } = require('./DevblogCard');
+const { hashnodeBlogCard } = require('./hashnodeBlogCard')
 
-const getMediumData = async (username) => {
-  try {
-    const result = await axios.get(mediumURL + username)
-    const filteredResult = result.data.items.filter(function (item) {
-      if (!item.thumbnail.includes('stat?event') || !item.thumbnail.includes('&referrerSource')) {
-        return true
-      } else {
-        return false
-      }
-    });
-    return filteredResult;
-  } catch (error) {
-    console.error(error);
-    return error
-  }
-}
-const getDevData = async (username) => {
-  try {
-    const result = await axios.get(devURL + username)
-    const filteredResult = result.data
-    // .items.filter(function (item) {
-    //   if (!item.thumbnail.includes('stat?event') || !item.thumbnail.includes('&referrerSource')) {
-    //     return true
-    //   } else {
-    //     return false
-    //   }
-    // });
-    return filteredResult;
-  } catch (error) {
-    console.error(error);
-    return error
-  }
-}
+
 
 const asyncForEach = async (array, callback) => {
   for (let index = 0; index < array.length; index++) {
     await callback(array[index], index, array)
   }
 };
+
 
 app.get('/getMediumBlogs', async (request, response) => {
   try {
@@ -183,6 +152,57 @@ app.get('/getMediumBlogsByID', async (request, response) => {
     result += `</svg>`;
     response.writeHead(200, { 'Content-Type': 'image/svg+xml' });
     response.write(result);
+    response.end();
+  } catch (error) {
+    console.log(error);
+    response.send('Error while fetching the data' + error);
+  }
+});
+
+app.get('/getHashnodeBlog', async (request, response) => {
+  try {
+    if (!request.query.slug || !request.query.hostname) {
+      response.write(JSON.stringify({ error: 'Query parameters are missing!' }));
+      response.end();
+      return;
+    }
+    const { slug, hostname, } = request.query;
+    const scale = request.query.scale || 1
+    const resultData = (await getHashnodeBlog(slug, hostname));
+    // console.log(resultData.data.post)
+    // console.log(resultData.data.post.author)
+    const blogCardObj = await hashnodeBlogCard(resultData.data.post, slug, hostname, scale);
+    response.writeHead(200, { 'Content-Type': 'image/svg+xml' });
+    response.write(blogCardObj);
+    response.end();
+    // response.writeHead(200, { 'Content-Type': 'type/markdown' });
+    // response.write();
+    // response.end();
+  } catch (error) {
+    console.log(error);
+    response.send('Error while fetching the data' + error);
+  }
+});
+
+
+app.get('/getHashnodeBlogMarkdown', async (request, response) => {
+  try {
+    if (!request.query.slug || !request.query.hostname) {
+      response.write(JSON.stringify({ error: 'Query parameters are missing!' }));
+      response.end();
+      return;
+    }
+    const { slug, hostname, } = request.query;
+    const scale = request.query.scale || 1
+    // const resultData = (await getHashnodeBlog(slug, hostname));
+    // console.log(resultData.data.post)
+    // console.log(resultData.data.post.author)
+    // const blogCardObj = await hashnodeBlogCard(resultData.data.post, slug, hostname, scale);
+    // response.writeHead(200, { 'Content-Type': 'image/svg+xml' });
+    // response.write(blogCardObj);
+    // response.end();
+    response.writeHead(200, { 'Content-Type': 'type/markdown' });
+    response.write(`[![Sourav Dey's Blog Cards](https://github-cards-external-blogs.souravdey777.vercel.app/getHashnodeBlog??slug=${slug}&hostname=${hostname})](https://${hostname}/${slug}`);
     response.end();
   } catch (error) {
     console.log(error);
