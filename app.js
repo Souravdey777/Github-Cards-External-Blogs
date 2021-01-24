@@ -171,7 +171,7 @@ app.get('/getHashnodeBlog', async (request, response) => {
     const { slug, hostname, } = request.query;
     // const scale = request.query.scale || 1
     const resultData = (await getHashnodeBlog(slug, hostname));
-    if (!resultData.data.post.length) {
+    if (!resultData.data.post) {
       response.write(JSON.stringify({ error: 'Post does not exits!' }));
       response.end();
       return;
