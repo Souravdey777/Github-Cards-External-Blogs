@@ -201,7 +201,7 @@ app.get('/getHashnodeBlogMarkdown', async (request, response) => {
     // response.writeHead(200, { 'Content-Type': 'image/svg+xml' });
     // response.write(blogCardObj);
     // response.end();
-    response.writeHead(200, { 'Content-Type': 'type/markdown' });
+    response.writeHead(200, { 'Content-Type': 'type/text' });
     response.write(`[![Sourav Dey's Blog Cards](https://github-cards-external-blogs.souravdey777.vercel.app/getHashnodeBlog??slug=${slug}&hostname=${hostname})](https://${hostname}/${slug}`);
     response.end();
   } catch (error) {
