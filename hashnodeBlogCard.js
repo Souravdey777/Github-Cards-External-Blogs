@@ -1,16 +1,8 @@
-const axios = require('axios');
-const getBase64 = async (url) => {
-  return await axios
-    .get(url, {
-      responseType: 'arraybuffer'
-    })
-    .then(response => Buffer.from(response.data, 'binary').toString('base64'))
-}
-
+const { getBase64 } = require('./getBase64');
 
 const hashnodeBlogCard = async (data, hostname) => {
   const { title, dateAdded, brief, author, slug } = data
-  const coverImage = await getBase64(data.coverImage);
+  const coverImage = data.coverImage !== "" ? await getBase64(data.coverImage) : "";
   const profileImage = await getBase64(author.photo);
   const blogDate = new Date(Date.parse(dateAdded)).toLocaleString('default', { year: 'numeric', month: 'short', day: 'numeric' })
   const blogLink = `https://${hostname}/${slug}`;
@@ -27,7 +19,7 @@ const hashnodeBlogCard = async (data, hostname) => {
   <tspan fill="#424242" fill-opacity="0.75"  font-family="Helvetica" font-weight="bold" font-size="14" letter-spacing="0em">@${author.username}</tspan></text>
   <text fill="#424242" fill-opacity="0.75"  font-family="Helvetica" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="71" y="53.8636">${blogDate}</tspan></text>
   <foreignObject
-        x="16" y="80" width="260" height="100">
+        x="16" y="80" width="260" height="120">
         <p
           xmlns="http://www.w3.org/1999/xhtml"
           xlink:href="#blogName"
@@ -36,9 +28,9 @@ const hashnodeBlogCard = async (data, hostname) => {
           >${title}
           </p>
   </foreignObject>
-  <text fill="#616161"  font-family="Helvetica" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="16" y="194.318">${hostname}</tspan></text>
+  <text fill="#616161"  font-family="Helvetica" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="16" y="215">${hostname}</tspan></text>
   <foreignObject
-        x="16" y="370" width="260" height="120">
+        x="16" y=${coverImage !== "" ? `"370"` : `"225"`} width="260" height="120">
         <p
           xmlns="http://www.w3.org/1999/xhtml"
           xlink:href="#blogName"
@@ -47,13 +39,13 @@ const hashnodeBlogCard = async (data, hostname) => {
           >${brief}
           </p>
   </foreignObject>
-  <rect id="coverImage" x="16" y="208" width="260" height="151.2" rx="4"/>
+  ${coverImage !== "" ? `<rect id="coverImage" x="16" y="225" width="260" height="151.2" rx="4"/>
   <clipPath id="coverImageClip">
   <use xlink:href="#coverImage"/>
   </clipPath>
-  <image x="16" y="208" width="260" clip-path="url(#coverImageClip)" height="151.2" preserveAspectRatio="xMinYMin" xlink:href="data:image/png;base64,${coverImage}"/>
+  <image x="16" y="225" width="260" clip-path="url(#coverImageClip)" height="151.2" preserveAspectRatio="xMinYMin" xlink:href="data:image/png;base64,${coverImage}"/>` : null}
   </a >
-  </svg>`;
+  </svg > `;
 };
 
 

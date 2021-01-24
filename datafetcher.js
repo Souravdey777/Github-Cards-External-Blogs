@@ -61,7 +61,7 @@ const getHashnodeBlog = async (slug, hostname) => {
     }
 };
 
-const getLatestHashnodeBlog = async (username) => {
+const getLatestHashnodeBlog = async (username, page = 0) => {
 
     try {
         const result = await axios.post(hashnodeURL, {
@@ -69,7 +69,7 @@ const getLatestHashnodeBlog = async (username) => {
             user(username: "${username}") {
                 publicationDomain
                 publication {
-                  posts(page:0) {
+                  posts(page:${page}) {
                     author{
                       username
                       name
@@ -86,10 +86,9 @@ const getLatestHashnodeBlog = async (username) => {
         }`,
         });
         const filteredResult = result.data;
-        console.log(result.data)
         return filteredResult;
     } catch (error) {
-        // console.error(error);
+        console.error(error);
         return error;
     }
 };

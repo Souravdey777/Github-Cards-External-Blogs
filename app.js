@@ -159,6 +159,8 @@ app.get('/getMediumBlogsByID', async (request, response) => {
   }
 });
 
+
+// Hashnode Blogs
 app.get('/getHashnodeBlog', async (request, response) => {
   try {
     if (!request.query.slug || !request.query.hostname) {
@@ -169,6 +171,11 @@ app.get('/getHashnodeBlog', async (request, response) => {
     const { slug, hostname, } = request.query;
     // const scale = request.query.scale || 1
     const resultData = (await getHashnodeBlog(slug, hostname));
+    if (!resultData.data.post.length) {
+      response.write(JSON.stringify({ error: 'Post does not exits!' }));
+      response.end();
+      return;
+    }
     const blogCardObj = await hashnodeBlogCard(resultData.data.post, hostname);
     response.writeHead(200, { 'Content-Type': 'image/svg+xml' });
     response.write(blogCardObj);
@@ -178,7 +185,6 @@ app.get('/getHashnodeBlog', async (request, response) => {
     response.send('Error while fetching the data' + error);
   }
 });
-
 
 app.get('/getLatestHashnodeBlog', async (request, response) => {
   try {
@@ -190,8 +196,11 @@ app.get('/getLatestHashnodeBlog', async (request, response) => {
     const { username } = request.query;
     // const scale = request.query.scale || 1
     const resultData = (await getLatestHashnodeBlog(username));
-    console.log(resultData.data)
-
+    if (!resultData.data.user.publication.posts.length) {
+      response.write(JSON.stringify({ error: 'Post does not exits!' }));
+      response.end();
+      return;
+    }
     let result = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${resultData.data.user.publication.posts.length * 176}" version="1.2" height="310">`;
     await asyncForEach(resultData.data.user.publication.posts, async (blog, index) => {
       const blogCardObj = await hashnodeBlogCard(blog, resultData.data.user.publicationDomain);
@@ -200,6 +209,33 @@ app.get('/getLatestHashnodeBlog', async (request, response) => {
     result += `</svg>`;
     response.writeHead(200, { 'Content-Type': 'image/svg+xml' });
     response.write(result);
+    response.end();
+  } catch (error) {
+    console.log(error);
+    response.send('Error while fetching the data' + error);
+  }
+});
+
+app.get('/getLatestHashnodeBlogBySequence', async (request, response) => {
+  try {
+    if (!request.query.username && !request.query.sequence && request.query.sequence > 0) {
+      response.write(JSON.stringify({ error: 'Query parameters are missing!' }));
+      response.end();
+      return;
+    }
+    const { username, sequence } = request.query;
+    var sequenceBy6 = sequence % 6;
+    sequenceBy6 = (sequenceBy6 === 0 ? 6 : sequenceBy6)
+    const page = parseInt((sequence - 1) / 6)
+    const resultData = (await getLatestHashnodeBlog(username, page));
+    if (!resultData.data.user.publication.posts[sequenceBy6 - 1]) {
+      response.write(JSON.stringify({ error: 'Post does not exits!' }));
+      response.end();
+      return;
+    }
+    const blogCardObj = await hashnodeBlogCard(resultData.data.user.publication.posts[sequenceBy6 - 1], resultData.data.user.publicationDomain);
+    response.writeHead(200, { 'Content-Type': 'image/svg+xml' });
+    response.write(blogCardObj);
     response.end();
   } catch (error) {
     console.log(error);
