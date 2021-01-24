@@ -169,14 +169,14 @@ app.get('/getHashnodeBlog', async (request, response) => {
       return;
     }
     const { slug, hostname, } = request.query;
-    // const scale = request.query.scale || 1
+    const large = request.query.large === "true" ? true : false
     const resultData = (await getHashnodeBlog(slug, hostname));
     if (!resultData.data.post) {
       response.write(JSON.stringify({ error: 'Post does not exits!' }));
       response.end();
       return;
     }
-    const blogCardObj = await hashnodeBlogCard(resultData.data.post, hostname);
+    const blogCardObj = await hashnodeBlogCard(resultData.data.post, hostname, large);
     response.writeHead(200, { 'Content-Type': 'image/svg+xml' });
     response.write(blogCardObj);
     response.end();
@@ -194,17 +194,18 @@ app.get('/getLatestHashnodeBlog', async (request, response) => {
       return;
     }
     const { username } = request.query;
-    // const scale = request.query.scale || 1
+
+    const large = request.query.large === "true" ? true : false
     const resultData = (await getLatestHashnodeBlog(username));
     if (!resultData.data.user.publication.posts.length) {
       response.write(JSON.stringify({ error: 'Post does not exits!' }));
       response.end();
       return;
     }
-    let result = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${resultData.data.user.publication.posts.length * 176}" version="1.2" height="310">`;
+    let result = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${resultData.data.user.publication.posts.length * (large ? 304 : 176)}" version="1.2" height="${(large ? 530 : 310)}">`;
     await asyncForEach(resultData.data.user.publication.posts, async (blog, index) => {
-      const blogCardObj = await hashnodeBlogCard(blog, resultData.data.user.publicationDomain);
-      result += `<svg x="${index * 176}" y="0">${blogCardObj}</svg>`;
+      const blogCardObj = await hashnodeBlogCard(blog, resultData.data.user.publicationDomain, large);
+      result += `<svg x="${index * (large ? 304 : 176)}" y="0">${blogCardObj}</svg>`;
     });
     result += `</svg>`;
     response.writeHead(200, { 'Content-Type': 'image/svg+xml' });
@@ -228,6 +229,7 @@ app.get('/getHashnodeBlogBySequence', async (request, response) => {
       response.end();
       return;
     }
+    const large = request.query.large === "true" ? true : false
     const { username, sequence } = request.query;
     var sequenceBy6 = sequence % 6;
     sequenceBy6 = (sequenceBy6 === 0 ? 6 : sequenceBy6)
@@ -238,7 +240,7 @@ app.get('/getHashnodeBlogBySequence', async (request, response) => {
       response.end();
       return;
     }
-    const blogCardObj = await hashnodeBlogCard(resultData.data.user.publication.posts[sequenceBy6 - 1], resultData.data.user.publicationDomain);
+    const blogCardObj = await hashnodeBlogCard(resultData.data.user.publication.posts[sequenceBy6 - 1], resultData.data.user.publicationDomain, large);
     response.writeHead(200, { 'Content-Type': 'image/svg+xml' });
     response.write(blogCardObj);
     response.end();

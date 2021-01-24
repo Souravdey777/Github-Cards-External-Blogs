@@ -1,13 +1,13 @@
 const { getBase64 } = require('./getBase64');
 
-const hashnodeBlogCard = async (data, hostname) => {
+const hashnodeBlogCard = async (data, hostname, large = false) => {
   const { title, dateAdded, brief, author, slug } = data
   const coverImage = data.coverImage !== "" ? await getBase64(data.coverImage) : "";
   const profileImage = await getBase64(author.photo);
   const blogDate = new Date(Date.parse(dateAdded)).toLocaleString('default', { year: 'numeric', month: 'short', day: 'numeric' })
   const blogLink = `https://${hostname}/${slug}`;
 
-  return `<svg width="174" height="300" viewBox="0 0 302 522" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  return `<svg  ${large ? ` width="302" height="522"` : ` width="174" height="300" `} viewBox="0 0 302 522" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <a href="${blogLink}" target="_blank">
   <rect x="1" y="1" width="300" height="520" rx="4" fill="white" stroke="#E5E7EB" stroke-width="2"/>
   <rect id="profileImage" x="16" y="20" width="40" height="40" rx="20" />
