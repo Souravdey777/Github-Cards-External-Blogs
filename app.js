@@ -199,6 +199,10 @@ app.get('/getLatestHashnodeBlog', async (request, response) => {
     let limit = 3;
     if (request.query.limit) {
       limit = request.query.limit;
+      if (limit > 6) {
+        response.write(JSON.stringify({ error: 'limit parameters is more than 6!' }));
+        response.end();
+      }
     }
     const large = request.query.large === "true" ? true : false
     const resultData = (await getLatestHashnodeBlog(username));
