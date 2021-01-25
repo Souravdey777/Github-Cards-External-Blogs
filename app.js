@@ -163,12 +163,14 @@ app.get('/getMediumBlogsByID', async (request, response) => {
 // Hashnode Blogs
 app.get('/getHashnodeBlog', async (request, response) => {
   try {
-    if (!request.query.slug || !request.query.hostname) {
-      response.write(JSON.stringify({ error: 'Query parameters are missing!' }));
+    if (!request.query.url) {
+      response.write(JSON.stringify({ error: 'URL parameters are missing!' }));
       response.end();
       return;
     }
-    const { slug, hostname, } = request.query;
+    var { hostname, pathname } = new URL(request.query.url);
+    console.log(hostname, pathname)
+    const slug = pathname.replace("/", "");
     const large = request.query.large === "true" ? true : false
     const resultData = (await getHashnodeBlog(slug, hostname));
     if (!resultData.data.post) {
