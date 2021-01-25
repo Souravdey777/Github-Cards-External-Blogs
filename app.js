@@ -211,7 +211,7 @@ app.get('/getLatestHashnodeBlog', async (request, response) => {
       response.end();
       return;
     }
-    let result = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${resultData.data.user.publication.posts.length * (large ? 304 : 176)}" version="1.2" height="${(large ? 530 : 310)}">`;
+    let result = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${index * (large ? 304 : 176)}" version="1.2" height="${(large ? 530 : 310)}">`;
     await asyncForEach(resultData.data.user.publication.posts, async (blog, index) => {
       if (index >= limit) {
         return;
