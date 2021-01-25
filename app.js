@@ -196,7 +196,10 @@ app.get('/getLatestHashnodeBlog', async (request, response) => {
       return;
     }
     const { username } = request.query;
-
+    let limit = 3;
+    if (request.query.limit) {
+      limit = request.query.limit;
+    }
     const large = request.query.large === "true" ? true : false
     const resultData = (await getLatestHashnodeBlog(username));
     if (!resultData.data.user.publication.posts.length) {
@@ -206,6 +209,9 @@ app.get('/getLatestHashnodeBlog', async (request, response) => {
     }
     let result = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${resultData.data.user.publication.posts.length * (large ? 304 : 176)}" version="1.2" height="${(large ? 530 : 310)}">`;
     await asyncForEach(resultData.data.user.publication.posts, async (blog, index) => {
+      if (index >= limit) {
+        return;
+      }
       const blogCardObj = await hashnodeBlogCard(blog, resultData.data.user.publicationDomain, large);
       result += `<svg x="${index * (large ? 304 : 176)}" y="0">${blogCardObj}</svg>`;
     });
