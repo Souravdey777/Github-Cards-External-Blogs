@@ -5,7 +5,8 @@ app.use(express.json());
 const { getDevData, getMediumData, getHashnodeBlog, getLatestHashnodeBlog } = require('./datafetcher')
 const { blogCardH, blogCardV } = require('./MediumblogCard');
 const { DblogCardH, DblogCardV } = require('./DevblogCard');
-const { hashnodeBlogCard, hashnodeLastestBlogCard } = require('./hashnodeBlogCard')
+const { hashnodeBlogCard, hashnodeLastestBlogCard } = require('./hashnodeBlogCard');
+const { request, response } = require('express');
 
 
 
@@ -15,6 +16,10 @@ const asyncForEach = async (array, callback) => {
   }
 };
 
+app.get('/', async (request, response) => {
+  response.writeHead(301, { Location: 'https://souravdey777.github.io/Github-Cards-External-Blogs/' });
+  response.end();
+})
 
 app.get('/getMediumBlogs', async (request, response) => {
   try {
