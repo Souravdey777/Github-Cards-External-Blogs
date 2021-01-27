@@ -1,37 +1,74 @@
-## Welcome to GitHub Pages
+## Blog Cards :loudspeaker:
 
-You can use the [editor on GitHub](https://github.com/Souravdey777/Github-Cards-External-Blogs/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat)](https://opensource.org/licenses/MIT)
+[![GitHub version](https://img.shields.io/badge/version-1.0-brightgreen.svg?style=flat)](https://github.com/Souravdey777/Github-Cards-External-Blogs)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Souravdey777/Github-Cards-External-Blogs/issues)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+**Show your support, a :star: is all this repo needs** :smile: 
 
-### Markdown
+**Check deploy your own :point_down:**
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Fetch your external blogs and display it right in your github profile.
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+[![Sourav Dey's Blog Cards](https://github-cards-external-blogs.souravdey777.vercel.app/getMediumBlogs?username=Souravdey777&type=horizontal)](https://medium.com/@Souravdey777)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+[![Sourav Dey's Blog Cards](https://github-cards-external-blogs.souravdey777.vercel.app/getMediumBlogs?username=Souravdey777&type=horizontal)](https://medium.com/@Souravdey777)
 
-### Jekyll Themes
+---
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Souravdey777/Github-Cards-External-Blogs/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Query params
 
-### Support or Contact
+Use the `?username=` of your Medium's account to fetch the blogs.<br>
+Use the `&type=` (horizontal or vertical) for alignment.(Optional). Default= **vertical**<br>
+Use the `&limit=` (number) for limit the count of blogs.(Optional). Default= **5**<br>
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+---
+
+### Example of markdown syntax
+
+Paste the markdown in your github readme (change the username)
+
+```
+[![Sourav Dey's Blog Cards](https://github-cards-external-blogs.souravdey777.vercel.app/getMediumBlogs?username=_Username_&type=horizontal)](https://medium.com/@_Username_)
+```
+
+---
+
+### Example of Vertical
+
+```
+[![Sourav Dey's Blog Cards](https://github-cards-external-blogs.souravdey777.vercel.app/getMediumBlogs?username=Souravdey777&type=vertical)](https://medium.com/@Souravdey777)
+```
+
+[![Sourav Dey's Blog Cards](https://github-cards-external-blogs.souravdey777.vercel.app/getMediumBlogs?username=Souravdey777&type=vertical)](https://medium.com/@Souravdey777)
+
+---
+
+### Example of Horizontal
+
+```
+[![Sourav Dey's Blog Cards](https://github-cards-external-blogs.souravdey777.vercel.app/getMediumBlogs?username=Souravdey777&type=horizontal)](https://medium.com/@Souravdey777)
+```
+
+[![Sourav Dey's Blog Cards](https://github-cards-external-blogs.souravdey777.vercel.app/getMediumBlogs?username=Souravdey777&type=horizontal)](https://medium.com/@Souravdey777)
+
+---
+
+**WIP**
+
+- [x] Medium BLogs
+- [x] DEV BLogs
+- [ ] UI Improvisation
+- [ ] Customisation of cards
+
+**Open to Suggestions, Issues and Contributions** :smile:
+
+---
+
+### Deploy your own
+
+**Show some love with :star:**
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https://github.com/Souravdey777/Github-Cards-External-Blogs)
