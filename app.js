@@ -6,7 +6,6 @@ const { getDevData, getMediumData, getHashnodeBlog, getLatestHashnodeBlog } = re
 const { blogCardH, blogCardV } = require('./MediumblogCard');
 const { DblogCardH, DblogCardV } = require('./DevblogCard');
 const { hashnodeBlogCard, hashnodeLastestBlogCard } = require('./hashnodeBlogCard');
-const { request, response } = require('express');
 
 
 
